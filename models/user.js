@@ -67,9 +67,20 @@ module.exports = (sequelize) => {
                 },
             },
         },
-    },
+    }, 
     {
-        sequelize,
+        sequelize
     });
+
+    // Add one-to-many association to Course model
+    User.associate = (models) => {
+        User.hasMany(models.Course, {
+            foreignKey: {
+                fieldName: "userId",
+                allowNull: false,
+            },
+        });
+    }
+
     return User;
 }

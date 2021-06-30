@@ -38,9 +38,20 @@ module.exports = (sequelize) => {
         materialsNeeded: {
             type: Sequelize.STRING, 
         },
-    },
+    }, 
     {
-        sequelize,
+        sequelize
     });
+
+    // Add one-to-one association to User model
+    Course.associate = (models) => {
+        Course.belongsTo(models.User, {
+            foreignKey: {
+                fieldName: "userId",
+                allowNull: false,
+            },
+        });
+    }
+
     return Course;
 }
