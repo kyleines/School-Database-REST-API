@@ -61,10 +61,6 @@ module.exports = (sequelize) => {
                 notEmpty: {
                     msg: "Please provide a password",
                 },
-                len: {
-                    args: [7, 14],
-                    msg: "Your password must be between 7 and 14 characters in length",
-                },
             },
         },
     }, 
@@ -75,6 +71,7 @@ module.exports = (sequelize) => {
     // Add one-to-many association to Course model
     User.associate = (models) => {
         User.hasMany(models.Course, {
+            as: "user",
             foreignKey: {
                 fieldName: "userId",
                 allowNull: false,
