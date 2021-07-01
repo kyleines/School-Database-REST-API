@@ -1,3 +1,19 @@
+/************************************************
+Treehouse FSJS Techdegree:
+Project 9 - School Database REST API
+************************************************/
+
+/*
+Dear Reviewer,
+I appreciate you for taking the time to review my project! 
+Your feedback is important to me and crucial to my growth as a developer.
+With the following code I hope to earn the "Exceeds Expectations" grade, and 
+I humbly request that you reject my submission if I don't meet those requirements.
+
+Thank you again!
+-Kyle
+*/
+
 'use strict';
 
 // load modules
@@ -18,6 +34,9 @@ const app = express();
 
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
+
+// setup request body JSON parsing. 
+app.use(express.json());
 
 // test the database connection
 (async () => {
@@ -60,7 +79,7 @@ app.use((err, req, res, next) => {
 });
 
 // set our port
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 3000);
 
 // start listening on our port
 const server = app.listen(app.get('port'), () => {
