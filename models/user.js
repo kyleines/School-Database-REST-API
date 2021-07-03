@@ -2,15 +2,15 @@
 "use strict";
 
 // load module
-const Sequelize = require("sequelize");
+const {Model, DataTypes} = require("sequelize");
 const bcrypt = require("bcrypt");
 
 // Creates User model
 module.exports = (sequelize) => {
-    class User extends Sequelize.Model {}
+    class User extends Model {}
     User.init({
         firstName: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             },
         },
         lastName: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
             },
         },
         emailAddress: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: {
                 msg: "The email address you provided already exists",
@@ -49,7 +49,7 @@ module.exports = (sequelize) => {
             },
         },
         password: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             set(value) {
                 this.setDataValue("password", bcrypt.hashSync(value, 10));

@@ -2,14 +2,14 @@
 "use strict";
 
 // load module
-const Sequelize = require("sequelize");
+const {Model, DataTypes} = require("sequelize");
 
 // Creates Course model
 module.exports = (sequelize) => {
-    class Course extends Sequelize.Model {}
+    class Course extends Model {}
     Course.init({
         title: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
             },
         },
         description: {
-            type: Sequelize.TEXT,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 notNull: {
@@ -33,10 +33,10 @@ module.exports = (sequelize) => {
             },
         },
         estimatedTime: {
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
         },
         materialsNeeded: {
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
         },
     }, 
     {
